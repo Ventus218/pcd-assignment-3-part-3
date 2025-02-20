@@ -92,5 +92,7 @@ func main() {
 		}
 	}
 	fmt.Println(fmt.Sprint("Winner is bot ", winnerId))
+
+	// Waiting for the winner bot to print that he's won
 	time.Sleep(time.Millisecond * 100)
 }

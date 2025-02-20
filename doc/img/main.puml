@@ -1,0 +1,26 @@
+@startuml main
+
+start
+
+:Choose the number;
+:Initialize channels;
+:Start runBot goroutines;
+:winnerId = null;
+
+while (winnerId) is (null)
+    :Inform bots that oracle's ready to receive guesses;
+    :Receive all guesses;
+    if (some bot guessed correctly) then (yes)
+        :winnerId = botId;
+        :Send winnerMsg(winnerId) to every bot;
+    else (no)
+        :Send appropriate suggestion to each bot;
+    endif
+endwhile (else)
+
+:Print winnerId;
+
+stop
+
+@enduml
+

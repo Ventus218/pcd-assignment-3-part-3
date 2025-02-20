@@ -1,0 +1,25 @@
+@startuml runBot
+
+start
+:Initialize knowledge;
+:shouldStop = false;
+
+while (shouldStop) is (no)
+    :Receive msg from oracle;
+    switch (msg)
+    case (isReadyForGuessMsg(msg))
+        :Generate new guess;
+        :Send guess to oracle;
+    case (isSuggestionMsg(msg))
+        :Update knowledge
+        based on suggestion;
+    case (isWinnerMsg(msg))
+        :Print 'I WON!!' if i'm the winner;
+        :shouldStop = true;
+    endswitch
+endwhile (yes)
+
+stop
+
+@enduml
+
