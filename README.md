@@ -39,10 +39,12 @@ go run .
 
 L'oracolo presenta il seguente funzionamento:
 ![Funzionamento oracolo](./doc/img/main.png)
+
 Questo diagramma è una semplificazione della funzione [main](./main.go#L41)
 
 Ogni bot presenta il seguente funzionamento:
 ![Funzionamento bot](./doc/img/runBot.png)
+
 Questo diagramma è una semplificazione della funzione [runBot](./main.go#L12)
 
 ## Dettagli implementativi
