@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-const MAX = 200
-const N_BOTS = 20
+const MAX = 10000
+const N_BOTS = 6
 
 func runBot(id int, guessChannel chan Guess, coordinationChannel chan CoordinationMsg, seeder *rand.Rand) {
 	var min = 0
@@ -31,7 +31,7 @@ func runBot(id int, guessChannel chan Guess, coordinationChannel chan Coordinati
 		} else {
 			// Must be a winnerMsg
 			if msg.WinnerId == id {
-				fmt.Println(fmt.Sprint(id, ": I WON!!"))
+				fmt.Println(fmt.Sprint("Bot ", id, ": I WON!!"))
 			}
 			shouldStop = true
 		}
@@ -39,7 +39,8 @@ func runBot(id int, guessChannel chan Guess, coordinationChannel chan Coordinati
 }
 
 func main() {
-	var r = rand.New(rand.NewPCG(123, 456))
+	// var r = rand.New(rand.NewPCG(123, 456)) // Seeded random
+	var r = rand.New(rand.NewPCG(uint64(time.Now().UnixNano()), uint64(time.Now().UnixNano()))) // Unseeded random
 	var v = r.IntN(MAX)
 	fmt.Println(fmt.Sprint("Value to guess is: ", v))
 	fmt.Println(fmt.Sprint(N_BOTS, " bots are playing"))
